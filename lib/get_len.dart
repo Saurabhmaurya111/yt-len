@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 // import 'package:last_moment/backend/fetch_Playlist_Items.dart';
 // import 'package:last_moment/backend/fetch_total_duration.dart';
-// import 'package:last_moment/backend/fomat_duration.dart';
+// import 'package:last_moment/backend/format_duration.dart';
 // import 'package:last_moment/backend/parseplaylistid.dart';
 import 'package:last_moment/components/appbar.dart';
 import 'package:last_moment/components/searchbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:lottie/lottie.dart';
 
 class GetLength extends StatefulWidget {
   const GetLength({super.key});
@@ -16,15 +18,22 @@ class GetLength extends StatefulWidget {
 }
 
 class _GetLengthState extends State<GetLength> {
- final TextEditingController _controller = TextEditingController();
-  final String apiKey = 'Your Api Key'; // Replace with your API key
+  final TextEditingController _controller = TextEditingController();
+  final String apiKey = 'Api Key'; // Replace with your API key
   String displayText = '';
+  bool _loading = false;
 
   Future<void> fetchPlaylistLength(String playlistLink) async {
+    setState(() {
+      _loading = true;
+      displayText = '';
+    });
+
     final playlistId = getId(playlistLink);
     if (playlistId == 'invalid_playlist_link') {
       setState(() {
         displayText = 'Invalid playlist link';
+        _loading = false;
       });
       return;
     }
@@ -41,6 +50,7 @@ class _GetLengthState extends State<GetLength> {
       if (results1.containsKey('error')) {
         setState(() {
           displayText = results1['error']['message'];
+          _loading = false;
         });
         return;
       }
@@ -55,6 +65,7 @@ class _GetLengthState extends State<GetLength> {
       if (results2.containsKey('error')) {
         setState(() {
           displayText = results2['error']['message'];
+          _loading = false;
         });
         return;
       }
@@ -79,6 +90,7 @@ class _GetLengthState extends State<GetLength> {
           'At 1.50x : ${formatDuration((totalDuration.inSeconds / 1.5).round())}\n'
           'At 1.75x : ${formatDuration((totalDuration.inSeconds / 1.75).round())}\n'
           'At 2.00x : ${formatDuration((totalDuration.inSeconds / 2).round())}';
+      _loading = false;
     });
   }
 
@@ -131,78 +143,63 @@ class _GetLengthState extends State<GetLength> {
     return Scaffold(
       appBar: CustomAppbar(),
       backgroundColor: Color.fromRGBO(37, 40, 44, 5),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Spacer(),
-            Text(
-              'Find the length of any YouTube playlist:',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: CusotomSearchBar(
-                controller: _controller,
-                hint: 'youtube.com/playlist?list=ID',
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'Find the length of any YouTube playlist:',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shadowColor: Colors.greenAccent),
-              onPressed: () {
-                final playlistUrl = _controller.text;
-                if (playlistUrl.isNotEmpty) {
-                  fetchPlaylistLength(_controller.text);
-                }
-              },
-              child: Text(
-                'Analyze',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+              SizedBox(
+                height: 20,
               ),
-            ),
-            // if (_loading)
-            //   CircularProgressIndicator(
-            //     color: Colors.white,
-            //   )
-            // else
-            //   Text(
-            //     _totalDuration,
-            //     style: TextStyle(
-            //         fontSize: 24,
-            //         fontWeight: FontWeight.bold,
-            //         color: Colors.white),
-            //   ),
-            SizedBox(height: 10,),
-             Text(displayText , style: TextStyle(color: Colors.white),),
-            SizedBox(
-              height: 10,
-            ),
-            // Text(
-            //   "Disclaimer",
-            //   style: TextStyle(fontSize: 15, color: Colors.white),
-            // ),
-            // Text(
-            //   "You can enter a playlist link, playlist ID or even a video link from the playlist! ",
-            //   style: TextStyle(color: Colors.white, fontSize: 10),
-            // ),
-            Spacer(),
-            Text(
-              "Made With ❤️ by Saurabh Maurya",
-              style: TextStyle(color: Colors.white),
-            )
-          ],
+              Center(
+                child: CusotomSearchBar(
+                  controller: _controller,
+                  hint: 'youtube.com/playlist?list=ID',
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shadowColor: Colors.greenAccent),
+                onPressed: () {
+                  final playlistUrl = _controller.text;
+                  if (playlistUrl.isNotEmpty) {
+                    fetchPlaylistLength(_controller.text);
+                  }
+                },
+                child: Text(
+                  'Analyze',
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+                ),
+              ),
+              SizedBox(height: 20),
+              _loading
+                  ? Lottie.asset('assets/load2.json')
+                  : Text(
+                      displayText,
+                      style: TextStyle(color: Colors.white),
+                    ),
+               SizedBox(height: 50,),    
+              SizedBox(height: 10),
+              Text(
+                "Made With ❤️ by Saurabh Maurya",
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          ),
         ),
       ),
     );
