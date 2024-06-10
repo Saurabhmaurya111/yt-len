@@ -15,7 +15,7 @@ class GetLength extends StatefulWidget {
 
 class _GetLengthState extends State<GetLength> {
   final TextEditingController _controller = TextEditingController();
-  final String apiKey = 'Api Key'; // Replace with your API key
+  final String apiKey = 'Api key'; // Replace with your API key
   String displayText = '';
   bool _loading = false;
 
@@ -183,7 +183,7 @@ class _GetLengthState extends State<GetLength> {
               ),
               SizedBox(height: 20),
               _loading
-                  ? Lottie.asset('assets/load2.json')
+                  ? Lottie.asset('assets/load3.json')
                   : Text(
                       displayText,
                       style: TextStyle(color: Colors.white),

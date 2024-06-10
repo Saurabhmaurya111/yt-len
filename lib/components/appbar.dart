@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/link.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({
@@ -27,19 +26,21 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/githubs.svg',
-              height: 38,
+          Link(
+            uri: Uri.parse('https://github.com/Saurabhmaurya111/yt-len'),
+            builder: (context, followLink) => IconButton(
+              onPressed: followLink,
+              icon: SvgPicture.asset(
+                'assets/githubs.svg',
+                height: 38,
+              ),
             ),
           ),
         ],
       ),
     );
-    
   }
-   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
