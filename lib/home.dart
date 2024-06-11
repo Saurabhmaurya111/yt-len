@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:last_moment/compare2.dart';
 import 'package:last_moment/compare_page.dart';
 import 'package:last_moment/get_len.dart';
 
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ComparePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>GetStats()));
                   },
                   child: Text('Compare Playlist'),
                 ),
