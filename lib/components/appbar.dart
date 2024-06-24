@@ -26,6 +26,17 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Spacer(),
+           Link(
+            uri: Uri.parse('https://www.linkedin.com/in/saurabh-maurya-986a10259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'),
+            builder: (context, followLink) => IconButton(
+              onPressed: followLink,
+              icon: SvgPicture.asset(
+                'assets/linkd2.svg',
+                height: 38,
+              ),
+            ),
+          ),
+         
           Link(
             uri: Uri.parse('https://github.com/Saurabhmaurya111/yt-len'),
             builder: (context, followLink) => IconButton(

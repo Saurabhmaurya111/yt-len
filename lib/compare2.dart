@@ -26,6 +26,7 @@ class _GetStatsState extends State<GetStats> {
   String result = '';
   Widget? linked;
   bool _loading = false;
+  bool showbutton = true;
   double playlist1LikePercentage = 0.0;
   double playlist2LikePercentage = 0.0;
 
@@ -149,6 +150,7 @@ class _GetStatsState extends State<GetStats> {
       playlist1LikePercentage = percentage1;
       playlist2LikePercentage = percentage2;
       _loading = false;
+      showbutton = false;
     });
   }
 
@@ -241,7 +243,7 @@ class _GetStatsState extends State<GetStats> {
                       color: Colors.black, fontWeight: FontWeight.w400),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               _loading
                   ? Lottie.asset('assets/load3.json')
                   : Column(
@@ -250,50 +252,73 @@ class _GetStatsState extends State<GetStats> {
                           displayText,
                           style: TextStyle(color: Colors.white),
                         ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Playlist 1 Likes Percentage',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        CircularPercentIndicator(
-                          radius: 100.0,
-                          animation: true,
-                          animationDuration: 1500,
-                          lineWidth: 15.0,
-                          percent: 0.4,
-                          center: new Text(
-                            '${playlist1LikePercentage.toStringAsFixed(2)}%',
-                            style: new TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.white),
+                        SizedBox(height: 10),
+                     showbutton? SizedBox(
+                      height: 0,
+                     ) : ElevatedButton(
+                          child: Text('View Stats' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.w400),),
+                          style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
                           ),
-                          circularStrokeCap: CircularStrokeCap.butt,
-                          backgroundColor: Colors.white,
-                          progressColor: Colors.red,
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Playlist 2 Likes Percentage',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        CircularPercentIndicator(
-                          radius: 100.0,
-                          animation: true,
-                          animationDuration: 1500,
-                          lineWidth: 15.0,
-                          percent: 0.4,
-                          center: new Text(
-                            '${playlist2LikePercentage.toStringAsFixed(2)}%',
-                            style: new TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.white),
-                          ),
-                          circularStrokeCap: CircularStrokeCap.butt,
-                          backgroundColor: Colors.white,
-                          progressColor: Colors.blue,
-                        ),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              backgroundColor: Colors.black,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Playlist 1 Likes Percentage',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        CircularPercentIndicator(
+                                          radius: 100.0,
+                                          animation: true,
+                                          animationDuration: 1500,
+                                          lineWidth: 15.0,
+                                          percent: 0.4,
+                                          center: new Text(
+                                            '${playlist1LikePercentage.toStringAsFixed(2)}%',
+                                            style: new TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0,
+                                                color: Colors.white),
+                                          ),
+                                          circularStrokeCap:
+                                              CircularStrokeCap.butt,
+                                          backgroundColor: Colors.white,
+                                          progressColor: Colors.red,
+                                        ),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'Playlist 2 Likes Percentage',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        CircularPercentIndicator(
+                                          radius: 100.0,
+                                          animation: true,
+                                          animationDuration: 1500,
+                                          lineWidth: 15.0,
+                                          percent: 0.4,
+                                          center: new Text(
+                                            '${playlist2LikePercentage.toStringAsFixed(2)}%',
+                                            style: new TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0,
+                                                color: Colors.white),
+                                          ),
+                                          circularStrokeCap:
+                                              CircularStrokeCap.butt,
+                                          backgroundColor: Colors.white,
+                                          progressColor: Colors.blue,
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                });
+                          },
+                        )
                       ],
                     ),
               SizedBox(height: 50),

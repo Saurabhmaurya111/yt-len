@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:last_moment/compare2.dart';
-import 'package:last_moment/compare_page.dart';
+// import 'package:last_moment/compare_page.dart';
 import 'package:last_moment/get_len.dart';
 
 class Home extends StatelessWidget {

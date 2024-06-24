@@ -38,18 +38,18 @@ dependencies:
   http:
   lottie:
   percent_indicator:
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_svg:
-  flutter_launcher_icons: "^0.13.1"
   url_launcher:
 
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/arrow.png"  
+  image_path: "assets/icon.png"  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
