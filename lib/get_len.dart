@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:last_moment/backend/api.dart';
 import 'package:last_moment/backend/secret.dart';
 import 'package:last_moment/components/appbar.dart';
+import 'package:last_moment/components/pallet.dart';
 import 'package:last_moment/components/searchbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -99,7 +100,7 @@ class _GetLengthState extends State<GetLength> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(),
-      backgroundColor: Color.fromRGBO(37, 40, 44, 5),
+      backgroundColor: Pallete.firstSuggestionBoxColor,
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(20),
@@ -110,7 +111,7 @@ class _GetLengthState extends State<GetLength> {
               Text(
                 'Find the length of any YouTube playlist:',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -147,7 +148,7 @@ class _GetLengthState extends State<GetLength> {
                   ? Lottie.asset('assets/load3.json')
                   : Text(
                       displayText,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black),
                     ),
               SizedBox(
                 height: 50,
@@ -155,7 +156,7 @@ class _GetLengthState extends State<GetLength> {
               SizedBox(height: 10),
               Text(
                 "Made With ❤️ by Saurabh Maurya",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               )
             ],
           ),

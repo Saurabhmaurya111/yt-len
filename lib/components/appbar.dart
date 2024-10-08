@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:last_moment/components/pallet.dart';
 import 'package:url_launcher/link.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,7 +12,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Color.fromRGBO(17, 20, 23, 1),
+      backgroundColor: Pallete.mainFontColor,
       title: Row(
         children: [
           Container(

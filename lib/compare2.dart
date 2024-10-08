@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:last_moment/backend/api.dart';
 import 'package:last_moment/backend/secret.dart';
 import 'package:last_moment/components/appbar.dart';
+import 'package:last_moment/components/pallet.dart';
 import 'package:last_moment/components/searchbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -193,7 +194,7 @@ class _GetStatsState extends State<GetStats> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(),
-      backgroundColor: Color.fromRGBO(37, 40, 44, 5),
+      backgroundColor: Pallete.secondSuggestionBoxColor,
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(20),
@@ -204,7 +205,7 @@ class _GetStatsState extends State<GetStats> {
               Text(
                 'Compare YouTube Playlists:',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -250,7 +251,7 @@ class _GetStatsState extends State<GetStats> {
                       children: [
                         Text(
                           displayText,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                         SizedBox(height: 10),
                      showbutton? SizedBox(
@@ -270,7 +271,7 @@ class _GetStatsState extends State<GetStats> {
                                       children: [
                                         Text(
                                           'Playlist 1 Likes Percentage',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: Colors.black),
                                         ),
                                         CircularPercentIndicator(
                                           radius: 100.0,
@@ -293,7 +294,7 @@ class _GetStatsState extends State<GetStats> {
                                         SizedBox(height: 20),
                                         Text(
                                           'Playlist 2 Likes Percentage',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: Colors.black),
                                         ),
                                         CircularPercentIndicator(
                                           radius: 100.0,
@@ -324,7 +325,7 @@ class _GetStatsState extends State<GetStats> {
               SizedBox(height: 50),
               Text(
                 result,
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.black),
               ),
               linked ?? SizedBox(),
               SizedBox(
@@ -332,7 +333,7 @@ class _GetStatsState extends State<GetStats> {
               ),
               Text(
                 "Made With ❤️ by Saurabh Maurya",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
             ],
           ),
