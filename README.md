@@ -2,6 +2,21 @@
 
 A new Flutter project.
 
+## Screenshot
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="assets/ss_yt/login.jpg" alt="Screenshot 1" width="300" style="margin-right: 20px;">
+  <img src="assets/ss_yt/Register.jpg" alt="Screenshot 2" width="300" style="margin-left: 20px;">
+</div>
+<div style="display: flex; justify-content: space-between;">
+  <img src="assets/ss_yt/home.jpg" alt="Screenshot 1" width="300" style="margin-right: 20px;">
+  <img src="assets/ss_yt/playlist.jpg" alt="Screenshot 2" width="300" style="margin-left: 20px;">
+</div>
+<div style="display: flex; justify-content: space-between;">
+  <img src="assets/ss_yt/comapare.jpg" alt="Screenshot 1" width="300" style="margin-right: 20px;">
+  
+</div>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
