@@ -1,6 +1,7 @@
-# last_moment
+# 🎥 YouTube Playlist Length 📊
 
-A new Flutter project.
+Analyze YouTube playlists and videos with ease! Get detailed information about video durations and playlist lengths.
+
 
 ## Screenshot
 
@@ -17,15 +18,24 @@ A new Flutter project.
   
 </div>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 🌟 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 📋 Analyze multiple playlists and individual videos
+- ⏱️ Calculate total duration of playlists
+- 🚀 Estimate playback times at different speeds (1.25x, 1.50x, 1.75x, 2.00x)
+- 🔢 Support for custom playback speeds
+- 📅 View average video length in playlists
+- 🔍 Analyze specific video ranges within playlists
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚧 Future additions (if I ever get around to it) 
+- [ ] Add support for asynchronous requests to speed up the process
+- [ ] Add caching layer to reduce API calls
+- [ ] Add more analytics related to the videos (like average views, likes, etc.)
+
+## 👏 Technologies Used
+- [Firebase](https://firebase.google.com/)
+- [YouTube Data API](https://developers.google.com/youtube/v3)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Flutter](https://flutter.dev/)
