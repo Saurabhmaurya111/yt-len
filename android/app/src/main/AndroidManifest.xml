@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="last_moment"
+        android:label="YT Len"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
@@ -22,6 +22,23 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <!-- Receive shared text (YouTube shares playlist links as text/plain) -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <!-- Open YouTube playlist links directly -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.youtube.com" android:pathPrefix="/playlist" />
+                <data android:scheme="https" android:host="youtube.com" android:pathPrefix="/playlist" />
+                <data android:scheme="https" android:host="m.youtube.com" android:pathPrefix="/playlist" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
